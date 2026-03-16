@@ -10,7 +10,12 @@ import org.springframework.test.annotation.DirtiesContext;
 
 @SpringBootTest
 @DirtiesContext
-@EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
+@EmbeddedKafka(
+    partitions = 1,
+    brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"},
+    // ADD THIS TOPICS PROPERTY!
+    topics = {"midas-transactions-topic"}
+)
 class TaskTwoTests {
     static final Logger logger = LoggerFactory.getLogger(TaskTwoTests.class);
 
